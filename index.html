@@ -29,6 +29,14 @@
     .card-categoria:active { transform: scale(0.96); background: #2a2a2a; }
     .btn-clientes { grid-column: 1 / -1; background: #004466; border: 1px solid #005580; }
 
+    /* REDES SOCIALES */
+    .redes-sociales { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
+    .btn-red { background: #222; border: 1px solid #333; border-radius: 12px; padding: 12px 5px; text-align: center; color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 500; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.2s ease, background 0.2s ease; display: flex; align-items: center; justify-content: center; }
+    .btn-red:active { transform: scale(0.96); background: #2a2a2a; }
+    .btn-wsp { border-color: #075e54; }
+    .btn-cat { border-color: #25d366; }
+    .btn-ig { border-color: #833ab4; }
+
     /* GALERÍA (Móvil: 3 columnas) */
     .contenedor-galeria { display: none; }
     .cabecera-galeria { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
@@ -70,6 +78,16 @@
         font-size: 1.25rem;
       }
 
+      .redes-sociales {
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .btn-red {
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+
       .galeria {
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
@@ -90,6 +108,12 @@
         <div class="card-categoria" onclick="abrirGaleria('Sesiones', '1IReNcUgPTRAa9nj3-u38QstyZWV9n6RY')">Sesiones</div>
         <div class="card-categoria" onclick="abrirGaleria('Eventos', '1Om0Aj2SeALgU-V--GxgMN7a_DxWI0hvJ')">Eventos</div>
         <div class="card-categoria btn-clientes" onclick="pedirPassword()">Acceso Clientes 🔒</div>
+      </div>
+
+      <div class="redes-sociales">
+        <a href="https://wa.me/542613175222" target="_blank" class="btn-red btn-wsp">Chat 💬</a>
+        <a href="https://wa.me/c/5492613175222" target="_blank" class="btn-red btn-cat">Catálogo 📦</a>
+        <a href="https://www.instagram.com/sergioricardo.molina?igsi=OG84bTUxanllMnh4" target="_blank" class="btn-red btn-ig">IG 📷</a>
       </div>
     </main>
   </div>
