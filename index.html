@@ -43,7 +43,7 @@
     .contenedor-modal-img { position: relative; display: flex; justify-content: center; align-items: center; max-width: 100%; max-height: 85vh; }
     .modal img { max-width: 100%; max-height: 85vh; object-fit: contain; }
     
-    .btn-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 2rem; padding: 15px; cursor: pointer; z-index: 1001; }
+    .btn-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 2rem; padding: 15px; cursor: pointer; z-index: 1001; user-select: none; }
     .btn-prev { left: 10px; } .btn-next { right: 10px; }
     .btn-cerrar { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; z-index: 1001; }
 
@@ -53,25 +53,23 @@
        ========================================== */
     @media (min-width: 768px) {
       body {
-        max-width: 950px; /* Se expande en PC */
+        max-width: 950px;
         padding: 30px;
       }
 
       h1 { font-size: 1.8rem; }
       h1 span { font-size: 1.1rem; }
 
-      /* El menú pasa a tener 3 columnas en PC */
       .grid-categorias {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
       }
 
       .card-categoria {
-        height: 140px; /* Tarjetas más cómodas para PC */
+        height: 140px;
         font-size: 1.25rem;
       }
 
-      /* La galería pasa a tener 4 columnas en PC para aprovechar el ancho */
       .galeria {
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
@@ -170,6 +168,20 @@
     function cerrarVisorFondo(e) { if(e.target.id==='modal') cerrarVisor(); }
     function cambiarFoto(d, e) { if(e) e.stopPropagation(); indiceFotoActual = (indiceFotoActual + d + fotosActuales.length) % fotosActuales.length; document.getElementById('img-ampliada').src = fotosActuales[indiceFotoActual]; }
     function abrirSeccionTexto() { document.getElementById('vista-menu').style.display='none'; document.getElementById('vista-sobre-mi').style.display='block'; }
+
+    // SOPORTE DE TECLADO PARA EL MODAL
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal');
+      if (modal.style.display === 'flex') {
+        if (e.key === 'Escape') {
+          cerrarVisor();
+        } else if (e.key === 'ArrowLeft') {
+          cambiarFoto(-1);
+        } else if (e.key === 'ArrowRight') {
+          cambiarFoto(1);
+        }
+      }
+    });
   </script>
 </body>
 </html>
